@@ -88,10 +88,10 @@ public class Configurator {
 			@SuppressWarnings("resource")
 			Scanner sc = new Scanner(line);
 		    String core= "\"spark.executor.cores="+Integer.toString(sc.nextInt())+"\"";
-		    String mem= "\"spark.executor.memory="+Integer.toString(sc.nextInt())+"\"";
+		    String mem= "\"spark.executor.memory="+Integer.toString(sc.nextInt())+"GB\"";
 		    String maxcore= "\"spark.cores.max="+Integer.toString(sc.nextInt())+"\"";
 			
-			submittAppList.add("."+Configuration.sparkHome+"/bin/spark-submit"+
+			submittAppList.add(Configuration.sparkHome+"/bin/spark-submit"+
 			" --conf "+core+
 			" --conf "+mem+
 			" --conf "+maxcore+

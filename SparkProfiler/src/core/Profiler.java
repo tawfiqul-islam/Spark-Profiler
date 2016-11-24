@@ -20,11 +20,8 @@ public class Profiler {
 	    
 	    Configurator.generateSparkSubmitList();
 	    
-	    for(int i=0;i<Configurator.submittAppList.size();i++)
-	    {
-	    	System.out.println(Configurator.submittAppList.get(i));
-	    }
 	    //start profiling of application with generated configurations
+	    ProfilerDeployer.submitApps();
 
 	}
 }
