@@ -6,9 +6,10 @@ package core;
 public class Profiler {
 
 	public static void main(String[] args) {
-		/*
+		
 		//Load Configurations
 		ConfigurationLoader.loadConfig();
+		
 	    //Configuration.printConfig();
 	    Configurator.generateAppConfig();
 	    //Prepare Input Using MicroBenachMarking Suits
@@ -19,11 +20,14 @@ public class Profiler {
 	    //Generate configurations of application for profiler
 	    
 	    Configurator.generateSparkSubmitList();
-	    
+	    //for(int i=0;i<Configurator.submittAppList.size();i++)
+		//{
+		//	System.out.println(Configurator.submittAppList.get(i));
+		//}
 	    //start profiling of application with generated configurations
 	    ProfilerDeployer.submitApps();
-*/
+
 		
-		LogParser.parseLog();
+		//LogParser.parseLog();
 	}
 }

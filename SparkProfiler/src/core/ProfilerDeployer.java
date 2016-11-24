@@ -1,8 +1,6 @@
 package core;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class ProfilerDeployer {
 	
@@ -10,6 +8,7 @@ public class ProfilerDeployer {
 	{
 		for(int i=0;i<Configurator.submittAppList.size();i++)
 		{
+			
 			System.out.println(Configurator.submittAppList.get(i));
 			String cmd = Configurator.submittAppList.get(i);
 			Runtime run = Runtime.getRuntime();
@@ -22,10 +21,13 @@ public class ProfilerDeployer {
 			}
 			try {
 				pr.waitFor();
+				break;
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			/*
 			BufferedReader buf = new BufferedReader(new InputStreamReader(pr.getInputStream()));
 			String line = "";
 			try {
@@ -35,7 +37,7 @@ public class ProfilerDeployer {
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 		}
 	}
 }
