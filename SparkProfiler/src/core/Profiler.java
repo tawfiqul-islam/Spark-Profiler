@@ -6,7 +6,7 @@ package core;
 public class Profiler {
 
 	public static void main(String[] args) {
-		
+		/*
 		//Load Configurations
 		ConfigurationLoader.loadConfig();
 	    //Configuration.printConfig();
@@ -22,6 +22,8 @@ public class Profiler {
 	    
 	    //start profiling of application with generated configurations
 	    ProfilerDeployer.submitApps();
-
+*/
+		
+		LogParser.parseLog();
 	}
 }
