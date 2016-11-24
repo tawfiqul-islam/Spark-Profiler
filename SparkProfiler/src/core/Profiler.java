@@ -26,6 +26,5 @@ public class Profiler {
 	    }
 	    //start profiling of application with generated configurations
 
-	    
 	}
 }
