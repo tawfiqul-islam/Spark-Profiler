@@ -28,6 +28,6 @@ public class Profiler {
 	    ProfilerDeployer.submitApps();
 
 		
-		//LogParser.parseLog();
+		LogParser.parseLog();
 	}
 }

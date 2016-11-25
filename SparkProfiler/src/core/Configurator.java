@@ -87,14 +87,14 @@ public class Configurator {
 		{ 
 			@SuppressWarnings("resource")
 			Scanner sc = new Scanner(line);
-		    String core= "\"spark.executor.cores="+Integer.toString(sc.nextInt())+"\"";
-		    String mem= "\"spark.executor.memory="+Integer.toString(sc.nextInt())+"GB\"";
-		    String maxcore= "\"spark.cores.max="+Integer.toString(sc.nextInt())+"\"";
+		    String core= "--executor-cores "+Integer.toString(sc.nextInt())+" ";
+		    String mem= "--executor-memory "+Integer.toString(sc.nextInt())+"G ";
+		    String maxcore= "--total-executor-cores "+Integer.toString(sc.nextInt());
 			
-			submittAppList.add(Configuration.sparkHome+"/bin/spark-submit"+
-			" --conf "+core+
-			" --conf "+mem+
-			" --conf "+maxcore+
+			submittAppList.add(Configuration.sparkHome+"/bin/spark-submit "+
+			core+
+			mem+
+			maxcore+
 			" --class "+Configuration.applicationClass+
 			" "+Configuration.applicationJar+
 			" "+Configuration.inputPath+

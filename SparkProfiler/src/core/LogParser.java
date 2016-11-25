@@ -8,7 +8,7 @@ import java.io.IOException;
 import org.json.*;
 
 public class LogParser {
-	@SuppressWarnings("null")
+	
 	public static void parseLog() {
 
 		System.out.println(Configuration.sparkHome+"/logs");

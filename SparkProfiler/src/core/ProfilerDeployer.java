@@ -7,6 +7,7 @@ public class ProfilerDeployer {
 	public static void submitApps()
 	{
 		for(int i=0;i<Configurator.submittAppList.size();i++)
+		//for(int i=0;i<1;i++)
 		{
 			
 			System.out.println(Configurator.submittAppList.get(i));
@@ -21,7 +22,7 @@ public class ProfilerDeployer {
 			}
 			try {
 				pr.waitFor();
-				break;
+				//break;
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
