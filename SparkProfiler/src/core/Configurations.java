@@ -1,12 +1,14 @@
 package core;
 
+import java.util.Comparator;
+
 /*
  * Holds the configurations needed for launching a Spark application on the cluster
  * It is also responsible for holding completion time of application with each config
  * 
  * @author: Muhammed Tawfiqul Islam
  */
-public class Configurations {
+public class Configurations implements Comparator<Configurations>, Comparable<Configurations>{
 	
 	private String appID;
 	private int core;
@@ -66,6 +68,16 @@ public class Configurations {
 		this.submitStr = submitStr;
 	}
 	
+	// Overriding the compareTo method
+   public int compareTo(Configurations d) {
+      return (this.appID).compareTo(d.appID);
+   }
+
+   // Overriding the compare method to sort the age 
+   public int compare(Configurations d, Configurations d1) {
+      return (int)(d.completionTime - d1.completionTime);
+   }
+   
 	public void printConfig()
 	{
 		System.out.println("\n\n*Application ID: "+appID);

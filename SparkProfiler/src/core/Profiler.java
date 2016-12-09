@@ -1,6 +1,7 @@
 package core;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /*The main class for the SparkProfiler
  * 
@@ -48,6 +49,11 @@ public class Profiler {
 		LogParser logParserObj = new LogParser();
 		logParserObj.parseLog();
 		
+		//printConfigList();
+		
+		Collections.sort(configList, new Configurations());
 		printConfigList();
+		
+		
 	}
 }

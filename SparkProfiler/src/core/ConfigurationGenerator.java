@@ -2,7 +2,6 @@ package core;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 
 /*
  * Generates configurations (depending on profiling level[high/low] and 
