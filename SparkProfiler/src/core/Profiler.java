@@ -10,7 +10,7 @@ import java.util.Collections;
 */
 public class Profiler {
 	
-	public static ArrayList<Configurations> configList=null;
+	public static ArrayList<Configurations> configList=new ArrayList<Configurations>();
 
 	
 	static void printConfigList()
@@ -21,13 +21,8 @@ public class Profiler {
 		}
 	}
 	
-	static void initialize()
-	{
-		configList = new ArrayList<Configurations>();
-	}
 	public static void main(String[] args) {
 		
-		initialize();
 		//Load Settings for Profiler
 		SettingsLoader.loadSettings();
 		
