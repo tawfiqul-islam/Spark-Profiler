@@ -52,6 +52,9 @@ public class ConfigurationGenerator {
 					configObj.setCore(sparkExecutorCores);
 					configObj.setMemory(sparkExecutorMemory);
 					configObj.setMaxCore(sparkCoresMax);
+					configObj.setTotalCores(sparkCoresMax);
+					configObj.setTotalExecs(sparkCoresMax/sparkExecutorCores);
+					configObj.setTotalMemory(sparkExecutorMemory*(sparkCoresMax/sparkExecutorCores));
 					Profiler.configList.add(configObj);
 					fw.write(sparkExecutorCores+" "+sparkExecutorMemory+" "+sparkCoresMax+"\n");
 				} catch (IOException e) {
