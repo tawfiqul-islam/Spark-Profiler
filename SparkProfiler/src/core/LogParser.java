@@ -97,8 +97,16 @@ public class LogParser {
 				Configurations configObj=findConfig(cores,mem,maxCores);
 				if(configObj!=null)
 				{
-					configObj.setAppID(appID);
-					configObj.setCompletionTime(endTime-startTime);;
+					if(configObj.getAppID()==null)
+					{
+						configObj.setAppID(appID);
+						configObj.setCompletionTime(endTime-startTime);
+					}
+					else if(!configObj.getAppID().equalsIgnoreCase(appID))
+					{
+						configObj.setAppID(appID);
+						configObj.setCompletionTime(endTime-startTime);
+					}
 				}
 				//System.out.println("Application Completion Time="+(endTime-startTime)/1000+"s"+"\n\n");
 

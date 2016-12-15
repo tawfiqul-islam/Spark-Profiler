@@ -17,7 +17,7 @@ public class ConfigurationGenerator {
 	int sparkCoresMax;
 	int sparkExecutorsPerWorker;
 	
-	int applicationCounter=0;
+	public static int applicationCounter=0;
 	
 	public  void generateAppConfig()
 	{
@@ -113,6 +113,5 @@ public class ConfigurationGenerator {
 			" "+Settings.outputPath+"/"+Integer.toString(applicationCounter++));
 			
 		}
-	
 	}
 }

@@ -14,14 +14,16 @@ public class Configurations implements Comparator<Configurations>, Comparable<Co
 	private int core;
 	private int memory;
 	private int maxCore;
-	private double completionTime;
+	private double completionTime[] = new double[3];
+	private int numCompletionTime=0;
 	private int priority;
 	private int totalMemory;
 	private int totalCores;
 	private int totalExecs;
 	private String submitStr;	
 	private boolean isSuccessful;
-
+	private double p1;
+	private double p2;
 	public String getAppID() {
 		return appID;
 	}
@@ -46,11 +48,11 @@ public class Configurations implements Comparator<Configurations>, Comparable<Co
 	public void setMaxCore(int maxCore) {
 		this.maxCore = maxCore;
 	}
-	public double getCompletionTime() {
-		return completionTime;
+	public double getCompletionTime(int i) {
+		return completionTime[i];
 	}
 	public void setCompletionTime(double completionTime) {
-		this.completionTime = completionTime;
+		this.completionTime[numCompletionTime++] = completionTime;
 	}
 	public int getPriority() {
 		return priority;
@@ -90,6 +92,19 @@ public class Configurations implements Comparator<Configurations>, Comparable<Co
 	public void setTotalExecs(int totalExecs) {
 		this.totalExecs = totalExecs;
 	}
+	
+	public double getP1() {
+		return p1;
+	}
+	public void setP1(double p1) {
+		this.p1 = p1;
+	}
+	public double getP2() {
+		return p2;
+	}
+	public void setP2(double p2) {
+		this.p2 = p2;
+	}
 	// Overriding the compareTo method
 	public int compareTo(Configurations d) {
 		return (this.appID).compareTo(d.appID);
@@ -97,7 +112,7 @@ public class Configurations implements Comparator<Configurations>, Comparable<Co
 
 	// Overriding the compare method to sort the age 
 	public int compare(Configurations d, Configurations d1) {
-		return (int)(d.completionTime - d1.completionTime);
+		return (int)(d.completionTime[0] - d1.completionTime[0]);
 	}
 
 	public void printConfig()
@@ -106,8 +121,8 @@ public class Configurations implements Comparator<Configurations>, Comparable<Co
 		System.out.println("Cores: "+core);
 		System.out.println("Memory: "+memory);
 		System.out.println("Max Cores: "+maxCore);
-		System.out.println("Completion Time: "+ completionTime+"ms");
-		System.out.println("Submission Command: "+submitStr);
+		for(int i=0;i<numCompletionTime;i++)
+			System.out.println("Completion Time "+(i+1)+": "+completionTime[i]+"ms");
 		System.out.println("Total Cores: "+totalCores);
 		System.out.println("Total Memory: "+totalMemory);
 		System.out.println("Total Executors: "+totalExecs);
