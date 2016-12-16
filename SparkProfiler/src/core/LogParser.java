@@ -22,6 +22,8 @@ public class LogParser {
 		{
 			if(cores==Profiler.configList.get(i).getCore()&&mem==Profiler.configList.get(i).getMemory()&&maxCores==Profiler.configList.get(i).getMaxCore())
 			{
+				System.out.println("Found match with appID: "+Profiler.configList.get(i).getAppID()+" num: "+Profiler.configList.get(i).getNumCompletionTime());
+				System.out.println("check function**  "+Profiler.configList.get(i).getCore()+" "+Profiler.configList.get(i).getMemory()+" "+Profiler.configList.get(i).getMaxCore());
 				return Profiler.configList.get(i);
 			}
 		}
@@ -99,12 +101,15 @@ public class LogParser {
 				{
 					if(configObj.getAppID()==null)
 					{
+						System.out.println("First Time");
 						configObj.setAppID(appID);
 						configObj.setCompletionTime(endTime-startTime);
 					}
-					else if(!configObj.getAppID().equalsIgnoreCase(appID))
+					else if(configObj.getAppID().equalsIgnoreCase(appID)==false)
 					{
-						configObj.setAppID(appID);
+						System.out.println("2nd Time");
+						System.out.println(appID+" "+configObj.getCore()+" "+configObj.getMemory()+" "+configObj.getMaxCore());
+						//configObj.setAppID(appID);
 						configObj.setCompletionTime(endTime-startTime);
 					}
 				}

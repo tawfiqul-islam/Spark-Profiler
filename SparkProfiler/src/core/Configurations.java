@@ -105,6 +105,13 @@ public class Configurations implements Comparator<Configurations>, Comparable<Co
 	public void setP2(double p2) {
 		this.p2 = p2;
 	}
+	
+	public int getNumCompletionTime() {
+		return numCompletionTime;
+	}
+	public void setNumCompletionTime(int numCompletionTime) {
+		this.numCompletionTime = numCompletionTime;
+	}
 	// Overriding the compareTo method
 	public int compareTo(Configurations d) {
 		return (this.appID).compareTo(d.appID);
@@ -126,6 +133,7 @@ public class Configurations implements Comparator<Configurations>, Comparable<Co
 		System.out.println("Total Cores: "+totalCores);
 		System.out.println("Total Memory: "+totalMemory);
 		System.out.println("Total Executors: "+totalExecs);
+		System.out.println("Num of Completion Times: "+numCompletionTime);
 		System.out.println("submission String: "+submitStr);
 
 	}
