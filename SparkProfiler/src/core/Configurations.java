@@ -1,5 +1,6 @@
 package core;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 
 /*
@@ -10,12 +11,11 @@ import java.util.Comparator;
  */
 public class Configurations implements Comparator<Configurations>, Comparable<Configurations>{
 
-	private String appID;
+	private ArrayList<String> appID = new ArrayList<String>();
 	private int core;
 	private int memory;
 	private int maxCore;
-	private double completionTime[] = new double[3];
-	private int numCompletionTime=0;
+	private ArrayList<Double> completionTime = new ArrayList<Double>();
 	private int priority;
 	private int totalMemory;
 	private int totalCores;
@@ -24,11 +24,25 @@ public class Configurations implements Comparator<Configurations>, Comparable<Co
 	private boolean isSuccessful;
 	private double p1;
 	private double p2;
-	public String getAppID() {
+	
+
+	public ArrayList<String> getAppID() {
 		return appID;
 	}
-	public void setAppID(String appID) {
+	public void setAppID(ArrayList<String> appID) {
 		this.appID = appID;
+	}
+	public String getAppIDi(int i) {
+		return appID.get(i);
+	}
+	public void addAppIDi(String appID) {
+		this.appID.add(appID);
+	}
+	public double getCompletionTimei(int i) {
+		return completionTime.get(i);
+	}
+	public void addCompletionTimei(double val) {
+		this.completionTime.add(val);
 	}
 	public int getCore() {
 		return core;
@@ -47,12 +61,6 @@ public class Configurations implements Comparator<Configurations>, Comparable<Co
 	}
 	public void setMaxCore(int maxCore) {
 		this.maxCore = maxCore;
-	}
-	public double getCompletionTime(int i) {
-		return completionTime[i];
-	}
-	public void setCompletionTime(double completionTime) {
-		this.completionTime[numCompletionTime++] = completionTime;
 	}
 	public int getPriority() {
 		return priority;
@@ -106,34 +114,42 @@ public class Configurations implements Comparator<Configurations>, Comparable<Co
 		this.p2 = p2;
 	}
 	
-	public int getNumCompletionTime() {
-		return numCompletionTime;
-	}
-	public void setNumCompletionTime(int numCompletionTime) {
-		this.numCompletionTime = numCompletionTime;
-	}
-	// Overriding the compareTo method
-	public int compareTo(Configurations d) {
-		return (this.appID).compareTo(d.appID);
+	@Override
+	public int compareTo(Configurations o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
-	// Overriding the compare method to sort the age 
+	@Override// Overriding the compare method to sort the age 
 	public int compare(Configurations d, Configurations d1) {
-		return (int)(d.completionTime[0] - d1.completionTime[0]);
+		return (int)(d.completionTime.get(0) - d1.completionTime.get(0));
 	}
 
+	public boolean findAppID(String str)
+	{
+		for(int i=0;i<appID.size();i++)
+			if(appID.get(i).equalsIgnoreCase(str))
+			{
+				return true;
+			}
+		return false;
+	}
 	public void printConfig()
 	{
-		System.out.println("\n\n*Application ID: "+appID);
+		for(int i=0;i<appID.size();i++)
+		{
+			System.out.println("*Application ID "+(i+1)+": "+appID.get(i));
+		}
 		System.out.println("Cores: "+core);
 		System.out.println("Memory: "+memory);
 		System.out.println("Max Cores: "+maxCore);
-		for(int i=0;i<numCompletionTime;i++)
-			System.out.println("Completion Time "+(i+1)+": "+completionTime[i]+"ms");
+		for(int i=0;i<completionTime.size();i++)
+		{
+			System.out.println("*Completion Time "+(i+1)+": "+completionTime.get(i)/1000+" s");
+		}
 		System.out.println("Total Cores: "+totalCores);
 		System.out.println("Total Memory: "+totalMemory);
 		System.out.println("Total Executors: "+totalExecs);
-		System.out.println("Num of Completion Times: "+numCompletionTime);
 		System.out.println("submission String: "+submitStr);
 
 	}
