@@ -26,8 +26,9 @@ public class ProfilerDeployer {
 				    .setConf("spark.executor.cores", cores)
 				    .setConf("spark.cores.max",  coresMax)
 				    .addAppArgs(Settings.inputPathProfiler)
+				    .addAppArgs("prize")
 				    .addAppArgs(Settings.outputPath+"/"+Integer.toString(outputIndex))
-				    .setMainClass(Settings.applicationClass).setMaster("spark://tawfiq-unimelbPC:7077").launch();
+				    .setMainClass(Settings.applicationClass).setMaster(Settings.sparkMaster).launch();
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}

@@ -19,6 +19,8 @@ public class Settings {
 	public static String applicationJar;
 	public static String applicationClass;
 	public static String outputPath;
+	public static String sparkMaster;
+	public static int reprofileSize;
 	
 	public static void printSettings()
 	{
@@ -27,6 +29,7 @@ public class Settings {
 		System.out.println("Memory in Each Worker="+workerMemory+"GB");
 		System.out.println("Maximum Cores Limit per Executor="+executorCoresLimit);
 		System.out.println("Profiler Input Size="+profilerInputSize+"GB");
+		System.out.println("Reprofile size="+reprofileSize);
 		System.out.println("Profiler Level="+profilerLevel);
 		System.out.println("Spark Home="+sparkHome);
 		System.out.println("Profiler Input Path="+inputPathProfiler);
@@ -34,5 +37,6 @@ public class Settings {
 		System.out.println("Application Jar="+applicationJar);
 		System.out.println("Application Class="+applicationClass);
 		System.out.println("OutputPath="+outputPath);
+		System.out.println("Spark Master="+sparkMaster);
 	}
 }

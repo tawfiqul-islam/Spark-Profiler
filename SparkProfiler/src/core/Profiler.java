@@ -1,7 +1,6 @@
 package core;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 /*The main class for the SparkProfiler
  * 
@@ -22,7 +21,7 @@ public class Profiler {
 	}
 	
 	public static void main(String[] args) {
-		
+		/*
 		//Load Settings for Profiler
 		SettingsLoader.loadSettings();
 		
@@ -47,6 +46,15 @@ public class Profiler {
 		printConfigList();
 		
 		Collections.sort(configList, new Configurations());
+		printConfigList();*/
+		SettingsLoader.loadSettings();
+		Settings.printSettings();
+		ConfigurationGenerator configGenObj = new ConfigurationGenerator();
+		configGenObj.generateAppConfig();
+	    configGenObj.generateSparkSubmitList();
+		LogParser logParserObj = new LogParser();
+		logParserObj.parseLog();
+		
 		printConfigList();
 		
 		

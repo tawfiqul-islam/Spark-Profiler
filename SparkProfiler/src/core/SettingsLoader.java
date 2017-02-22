@@ -31,6 +31,7 @@ public class SettingsLoader {
 		Settings.workerMemory=Integer.parseInt(prop.getProperty("worker.memory"));
 		Settings.executorCoresLimit=Integer.parseInt(prop.getProperty("executor.cores.limit"));
 		Settings.profilerInputSize=Integer.parseInt(prop.getProperty("profiler.input.size"));
+		Settings.reprofileSize=Integer.parseInt(prop.getProperty("reprofile.size"));
 		Settings.profilerLevel=prop.getProperty("profiler.level");
 		Settings.sparkHome=prop.getProperty("spark.home");
 		Settings.inputPathProfiler=prop.getProperty("profiler.input.path");
@@ -38,6 +39,7 @@ public class SettingsLoader {
 		Settings.applicationJar=prop.getProperty("application.jar.path");
 		Settings.applicationClass=prop.getProperty("application.class");
 		Settings.outputPath=prop.getProperty("application.outputPath");
+		Settings.sparkMaster=prop.getProperty("spark.master");
 		
 	} catch (IOException ex) {
 		ex.printStackTrace();
@@ -52,5 +54,4 @@ public class SettingsLoader {
 	}
 
   }
-
 }
