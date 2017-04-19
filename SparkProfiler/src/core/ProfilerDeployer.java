@@ -19,6 +19,8 @@ public class ProfilerDeployer {
 	{
 		Process pr = null;
 		try {
+			if(Settings.applicationClass.equalsIgnoreCase("cn.ac.ict.bigdatabench.Grep"))
+			{
 					pr = new SparkLauncher()
 				    .setSparkHome(Settings.sparkHome)
 				    .setAppResource(Settings.applicationJar)
@@ -26,9 +28,24 @@ public class ProfilerDeployer {
 				    .setConf("spark.executor.cores", cores)
 				    .setConf("spark.cores.max",  coresMax)
 				    .addAppArgs(Settings.inputPathProfiler)
-				    .addAppArgs("prize")
+				    .addAppArgs(Settings.appArgs)
 				    .addAppArgs(Settings.outputPath+"/"+Integer.toString(outputIndex))
 				    .setMainClass(Settings.applicationClass).setMaster(Settings.sparkMaster).launch();
+			}
+			else
+			{
+				pr = new SparkLauncher()
+					    .setSparkHome(Settings.sparkHome)
+					    .setAppResource(Settings.applicationJar)
+					    .setConf("spark.executor.memory", memory)
+					    .setConf("spark.executor.cores", cores)
+					    .setConf("spark.cores.max",  coresMax)
+					    .addAppArgs(Settings.inputPathProfiler)
+					    .addAppArgs(Settings.outputPath+"/"+Integer.toString(outputIndex))
+					    .setMainClass(Settings.applicationClass).setMaster(Settings.sparkMaster).launch();
+			}
+					
+			 
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
@@ -72,11 +89,64 @@ public class ProfilerDeployer {
 	        }
 	    }
 	}
+	private void executeCommand() {
+
+		StringBuffer output = new StringBuffer();
+
+		Process p;
+		try {
+
+			p = Runtime.getRuntime().exec(new String[]{"ssh","-t","tawfiq@20.0.0.5","rm -rf /home/tawfiq/sp/spark-2.0.1/myoutput/"});
+			p.waitFor();
+			BufferedReader reader =
+                            new BufferedReader(new InputStreamReader(p.getErrorStream()));
+
+                        String line = "";
+			while ((line = reader.readLine())!= null) {
+				output.append(line + "\n");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+
+	}
+	private void executeCommand2() {
+
+		StringBuffer output = new StringBuffer();
+
+		Process p;
+		try {
+
+			p = Runtime.getRuntime().exec(new String[]{"ssh","-t","tawfiq@20.0.0.8","rm -rf /home/tawfiq/sp/spark-2.0.1/myoutput/"});
+			p.waitFor();
+			BufferedReader reader =
+                            new BufferedReader(new InputStreamReader(p.getErrorStream()));
+
+                        String line = "";
+			while ((line = reader.readLine())!= null) {
+				output.append(line + "\n");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+
+	}
+
 	public void submitApps(int outputIndex)
 	{
 		for(int i=0;i<Profiler.configList.size();i++)
 		{	
-			runCommand(Integer.toString(Profiler.configList.get(i).getCore()),Integer.toString(Profiler.configList.get(i).getMemory())+"g",Integer.toString(Profiler.configList.get(i).getMaxCore()),outputIndex++);	
+			for(int j=0;j<Settings.reprofileSize;j++)
+			{
+				runCommand(Integer.toString(Profiler.configList.get(i).getCore()),Integer.toString(Profiler.configList.get(i).getMemory())+"g",Integer.toString(Profiler.configList.get(i).getMaxCore()),outputIndex++);
+				executeCommand();
+				executeCommand2();
+			}
+			
 		}
 	}
 }

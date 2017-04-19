@@ -47,15 +47,29 @@ public class Profiler {
 		
 		Collections.sort(configList, new Configurations());
 		printConfigList();*/
+		
+	
+		
 		SettingsLoader.loadSettings();
 		Settings.printSettings();
 		ConfigurationGenerator configGenObj = new ConfigurationGenerator();
 		configGenObj.generateAppConfig();
-	    configGenObj.generateSparkSubmitList();
+		
+		
+		
+		
+		/*
+		ProfilerDeployer profDepObj = new ProfilerDeployer();
+		profDepObj.submitApps(0);
 		LogParser logParserObj = new LogParser();
 		logParserObj.parseLog();
-		
 		printConfigList();
+		*/
+	    //configGenObj.generateSparkSubmitList();
+		//LogParser logParserObj = new LogParser();
+		//logParserObj.parseLog();
+		
+	
 		
 		
 	}

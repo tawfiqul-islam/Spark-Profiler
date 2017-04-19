@@ -18,9 +18,11 @@ public class Settings {
 	public static String inputPathApplication;
 	public static String applicationJar;
 	public static String applicationClass;
+	public static String appArgs;
 	public static String outputPath;
 	public static String sparkMaster;
 	public static int reprofileSize;
+	
 	
 	public static void printSettings()
 	{

@@ -19,6 +19,47 @@ public class ConfigurationGenerator {
 	
 	public static int applicationCounter=0;
 	
+	public void generateAppConfig()
+	{
+		FileWriter fw = null;
+		try {
+			fw = new FileWriter("applicationConfig.txt");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		for(int i=1;i<=Settings.workerCores/Settings.executorCoresLimit;i++)
+		{
+			for(int k=1;k<=Settings.workerMemory/Settings.workerCores;k++)
+			{
+				try {
+					Configurations configObj = new Configurations();
+					configObj.setCore(Settings.executorCoresLimit);
+					configObj.setMemory(Settings.executorCoresLimit*k);
+					configObj.setMaxCore(Settings.executorCoresLimit*i);
+									
+					
+					configObj.setTotalCores(Settings.executorCoresLimit*i);
+					configObj.setTotalExecs(i);
+					configObj.setTotalMemory(i*Settings.executorCoresLimit*k);
+					Profiler.configList.add(configObj);
+					fw.write(Settings.executorCoresLimit+" "+Settings.executorCoresLimit*k+" "+Settings.executorCoresLimit*i+"\n");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}		
+				
+			}
+		}
+		try {
+			fw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+/*	
 	public  void generateAppConfig()
 	{
 		FileWriter fw = null;
@@ -71,6 +112,58 @@ public class ConfigurationGenerator {
 			e.printStackTrace();
 		}
 	}
+	*/
+	/*public  void generateAppConfig()
+	{
+		FileWriter fw = null;
+		try {
+			fw = new FileWriter("applicationConfig.txt");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		if(Settings.profilerLevel.equalsIgnoreCase("low"))
+		{
+			coreStarter=Settings.executorCoresLimit;
+		}
+		
+		for(int i=coreStarter;i<=Settings.workerCores;i++)
+		{
+			
+			sparkExecutorCores=i;
+			int memPerCore = Settings.workerMemory/Settings.workerCores;
+			sparkExecutorMemory=memPerCore*sparkExecutorCores;
+			 
+			try {
+				Configurations configObj = new Configurations();
+				configObj.setCore(sparkExecutorCores);
+				configObj.setMemory(sparkExecutorMemory);
+				configObj.setMaxCore(sparkExecutorCores);
+				configObj.setTotalCores(sparkExecutorCores);
+				configObj.setTotalExecs(1);
+				configObj.setTotalMemory(sparkExecutorMemory);
+				Profiler.configList.add(configObj);
+				Profiler.configList.add(configObj);
+				Profiler.configList.add(configObj);
+				Profiler.configList.add(configObj);
+				Profiler.configList.add(configObj);
+				fw.write(sparkExecutorCores+" "+sparkExecutorMemory+" "+sparkExecutorCores+"\n");
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}					
+			
+		}
+		try {
+			fw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}*/
 	
 	public void generateSparkSubmitList()
 	{

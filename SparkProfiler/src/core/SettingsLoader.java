@@ -40,6 +40,7 @@ public class SettingsLoader {
 		Settings.applicationClass=prop.getProperty("application.class");
 		Settings.outputPath=prop.getProperty("application.outputPath");
 		Settings.sparkMaster=prop.getProperty("spark.master");
+		Settings.appArgs=prop.getProperty("appArgs");
 		
 	} catch (IOException ex) {
 		ex.printStackTrace();
