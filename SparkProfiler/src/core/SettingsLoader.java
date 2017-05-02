@@ -41,6 +41,7 @@ public class SettingsLoader {
 		Settings.outputPath=prop.getProperty("application.outputPath");
 		Settings.sparkMaster=prop.getProperty("spark.master");
 		Settings.appArgs=prop.getProperty("appArgs");
+		Settings.coreCost=Double.parseDouble(prop.getProperty("coreCost"));
 		
 	} catch (IOException ex) {
 		ex.printStackTrace();

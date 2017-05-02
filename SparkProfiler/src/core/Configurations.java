@@ -9,7 +9,7 @@ import java.util.Comparator;
  * 
  * @author: Muhammed Tawfiqul Islam
  */
-public class Configurations implements Comparator<Configurations>, Comparable<Configurations>{
+public class Configurations implements Comparator<Configurations>{
 
 	private ArrayList<String> appID = new ArrayList<String>();
 	private int core;
@@ -24,7 +24,7 @@ public class Configurations implements Comparator<Configurations>, Comparable<Co
 	private boolean isSuccessful;
 	private double p1;
 	private double p2;
-	
+	private double cost;
 
 	public ArrayList<String> getAppID() {
 		return appID;
@@ -114,15 +114,18 @@ public class Configurations implements Comparator<Configurations>, Comparable<Co
 		this.p2 = p2;
 	}
 	
-	@Override
-	public int compareTo(Configurations o) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double getCost() {
+		return cost;
+	}
+	public void setCost(double cost) {
+		this.cost = cost;
 	}
 
-	@Override// Overriding the compare method to sort the age 
-	public int compare(Configurations d, Configurations d1) {
-		return (int)(d.completionTime.get(0) - d1.completionTime.get(0));
+	@Override// Overriding the compare method to sort by cost 
+	public int compare(Configurations d1, Configurations d2) {
+	        if (d1.cost < d2.cost) return -1;
+	        if (d1.cost > d2.cost) return 1;
+	        return 0;
 	}
 
 	public boolean findAppID(String str)
@@ -134,6 +137,7 @@ public class Configurations implements Comparator<Configurations>, Comparable<Co
 			}
 		return false;
 	}
+	
 	public void printConfig()
 	{
 		double completionTimeTotal=0;
@@ -144,6 +148,7 @@ public class Configurations implements Comparator<Configurations>, Comparable<Co
 		System.out.println("Cores: "+core);
 		System.out.println("Memory: "+memory);
 		System.out.println("Max Cores: "+maxCore);
+		System.out.println("Cost: "+cost);
 		for(int i=0;i<completionTime.size();i++)
 		{
 			completionTimeTotal+=completionTime.get(i)/1000;
@@ -156,5 +161,4 @@ public class Configurations implements Comparator<Configurations>, Comparable<Co
 		System.out.println("submission String: "+submitStr);
 
 	}
-
 }

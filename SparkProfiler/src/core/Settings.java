@@ -22,6 +22,7 @@ public class Settings {
 	public static String outputPath;
 	public static String sparkMaster;
 	public static int reprofileSize;
+	public static double coreCost;
 	
 	
 	public static void printSettings()
@@ -40,5 +41,7 @@ public class Settings {
 		System.out.println("Application Class="+applicationClass);
 		System.out.println("OutputPath="+outputPath);
 		System.out.println("Spark Master="+sparkMaster);
+		System.out.println("Core Cost="+coreCost);
+		
 	}
 }
