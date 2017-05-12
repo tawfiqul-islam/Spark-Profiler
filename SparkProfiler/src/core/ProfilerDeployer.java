@@ -109,8 +109,6 @@ public class ProfilerDeployer {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-
 	}
 	private void executeCommand2() {
 

@@ -140,7 +140,7 @@ public class Configurations implements Comparator<Configurations>{
 	
 	public void printConfig()
 	{
-		double completionTimeTotal=0;
+		/*double completionTimeTotal=0;
 		for(int i=0;i<appID.size();i++)
 		{
 			System.out.println("*Application ID "+(i+1)+": "+appID.get(i));
@@ -148,17 +148,20 @@ public class Configurations implements Comparator<Configurations>{
 		System.out.println("Cores: "+core);
 		System.out.println("Memory: "+memory);
 		System.out.println("Max Cores: "+maxCore);
-		System.out.println("Cost: "+cost);
 		for(int i=0;i<completionTime.size();i++)
 		{
 			completionTimeTotal+=completionTime.get(i)/1000;
 			System.out.println("*Completion Time "+(i+1)+": "+completionTime.get(i)/1000+" s");
 		}
 		System.out.println("avg Completion Time: "+completionTimeTotal/completionTime.size());
+		*/
 		System.out.println("Total Cores: "+totalCores);
 		System.out.println("Total Memory: "+totalMemory);
 		System.out.println("Total Executors: "+totalExecs);
-		System.out.println("submission String: "+submitStr);
+		System.out.println("Cost: "+cost);
+		//System.out.println("submission String: "+submitStr);
+		System.out.println("P1: "+p1);
+		System.out.println("P2: "+p2);
 
 	}
 }
