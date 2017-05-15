@@ -31,7 +31,8 @@ public class SettingsLoader {
 		Settings.workerMemory=Integer.parseInt(prop.getProperty("worker.memory"));
 		Settings.executorCoresLimit=Integer.parseInt(prop.getProperty("executor.cores.limit"));
 		Settings.profilerInputSize=Integer.parseInt(prop.getProperty("profiler.input.size"));
-		Settings.reprofileSize=Integer.parseInt(prop.getProperty("reprofile.size"));
+		Settings.reProfile=Integer.parseInt(prop.getProperty("reprofile.size"));
+		Settings.repeatConfig=Integer.parseInt(prop.getProperty("repeat.config"));
 		Settings.profilerLevel=prop.getProperty("profiler.level");
 		Settings.sparkHome=prop.getProperty("spark.home");
 		Settings.inputPathProfiler=prop.getProperty("profiler.input.path");

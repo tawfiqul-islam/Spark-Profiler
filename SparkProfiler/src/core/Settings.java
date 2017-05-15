@@ -21,7 +21,8 @@ public class Settings {
 	public static String appArgs;
 	public static String outputPath;
 	public static String sparkMaster;
-	public static int reprofileSize;
+	public static int reProfile;
+	public static int repeatConfig;
 	public static double coreCost;
 	
 	
@@ -32,7 +33,7 @@ public class Settings {
 		System.out.println("Memory in Each Worker="+workerMemory+"GB");
 		System.out.println("Maximum Cores Limit per Executor="+executorCoresLimit);
 		System.out.println("Profiler Input Size="+profilerInputSize+"GB");
-		System.out.println("Reprofile size="+reprofileSize);
+		System.out.println("Reprofile size="+reProfile);
 		System.out.println("Profiler Level="+profilerLevel);
 		System.out.println("Spark Home="+sparkHome);
 		System.out.println("Profiler Input Path="+inputPathProfiler);
